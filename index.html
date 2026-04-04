@@ -2,7 +2,25 @@
 <html lang="en">
 <head>
     <div style="position: fixed; bottom: 20px; right: 20px; font-family: Arial, sans-serif; z-index: 9999;">
-  
+      <!-- Dark Mode Toggle -->
+    <button onclick="toggleDarkMode()" 
+    style="
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+        opacity: 0.7;
+    "
+    title="Toggle dark mode">
+    🌙
+    </button>
   <!-- Toggle Button -->
   <button onclick="toggleDonate()" 
     style="padding: 12px 16px; border: none; border-radius: 999px; background-color: #14F195; color: #000; font-weight: bold; cursor: pointer;">
@@ -60,6 +78,22 @@ function copyAddress() {
       gtag('js', new Date());
 
       gtag('config', 'G-X357ZFGH04');
+    </script>
+    <script>
+    function toggleDarkMode() {
+    const root = document.documentElement;
+    const isDark = root.classList.toggle("dark");
+
+    // Save preference
+    localStorage.setItem("darkMode", isDark ? "on" : "off");
+    }
+
+    // Load saved mode
+    window.onload = () => {
+    if (localStorage.getItem("darkMode") === "on") {
+        document.documentElement.classList.add("dark");
+    }
+    };
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -318,6 +352,16 @@ function copyAddress() {
             overflow-x: auto;
             white-space: pre-wrap;
             word-break: break-all;
+        }
+
+        /* Dark Mode */
+        .dark {
+        --bg: #0f172a;
+        --bg-secondary: #111827;
+        --text: #e5e7eb;
+        --text-muted: #9ca3af;
+        --border: #1f2937;
+        --code-bg: #020617;
         }
 
         /* Footer */
