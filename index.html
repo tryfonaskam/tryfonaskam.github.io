@@ -1,6 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <div style="position: fixed; bottom: 20px; right: 20px; font-family: Arial, sans-serif; z-index: 9999;">
+  
+  <!-- Toggle Button -->
+  <button onclick="toggleDonate()" 
+    style="padding: 12px 16px; border: none; border-radius: 999px; background-color: #14F195; color: #000; font-weight: bold; cursor: pointer;">
+    💸 Donate
+  </button>
+
+  <!-- Expandable Box -->
+  <div id="donateBox" 
+    style="display: none; margin-top: 10px; width: 260px; padding: 15px; background: #fff; border: 1px solid #ccc; border-radius: 12px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    
+    <p style="margin: 5px 0 10px;">Send SOL</p>
+
+    <!-- QR Code -->
+    <img 
+      src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=solana:7yKi6iYdYdN29BHZzPRVpBm12bUuadNm5eGvkyEnqir5"
+      style="border-radius: 8px; margin-bottom: 10px;"
+    >
+
+    <!-- Address -->
+    <input 
+      type="text"
+      value="7yKi6iYdYdN29BHZzPRVpBm12bUuadNm5eGvkyEnqir5"
+      id="solAddress"
+      readonly
+      style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #aaa; text-align: center; font-size: 12px;"
+    >
+
+    <!-- Copy Button -->
+    <button onclick="copyAddress()" 
+      style="margin-top: 8px; padding: 8px 12px; border: none; border-radius: 8px; background-color: #14F195; color: #000; cursor: pointer;">
+      Copy
+    </button>
+  </div>
+</div>
+
+<script>
+function toggleDonate() {
+  const box = document.getElementById("donateBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+function copyAddress() {
+  const input = document.getElementById("solAddress");
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Address copied!");
+}
+</script>
 	<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X357ZFGH04"></script>
     <script>
